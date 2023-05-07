@@ -3,7 +3,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(warning-suppress-log-types '((auto-save)))
+ '(warning-suppress-types '((auto-save))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -15,5 +17,8 @@
 
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
-(windmove-default-keybindings)
+(define-key global-map (kbd "C-c C-<up>") 'windmove-up)
+(define-key global-map (kbd "C-c C-<down>") 'windmove-down)
+(define-key global-map (kbd "C-c C-<left>") 'windmove-left)
+(define-key global-map (kbd "C-c C-<right>") 'windmove-right)
 
