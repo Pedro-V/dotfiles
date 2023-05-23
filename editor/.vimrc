@@ -18,20 +18,59 @@ if &compatible
   set nocompatible
 endif
 
+" -------------------------------------------------- 
 " My configs
+" --------------------------------------------------
 
-" numbered lines
-set number
+" relative numbered lines
+set rnu
+" used to CTRL-S = save 
+nnoremap <C-s> :w<CR>
+inoremap <C-s> :w<CR>
+" and CTRL-Q for fast quitting
+nnoremap <C-q> :q<CR>
+inoremap <C-q> :q<CR>
 " margin for auto-break
 set wrapmargin=15
 " automatically executes :w before :[n!]
 set autowrite
-set autoindent
-set showmatch
 " default to tabs as spaces, of size 4
 set expandtab
 set shiftwidth=4
 set tabstop=4
+" Folding
+" set foldmethod=indent
+" set foldnestmax=2
+" Indentation
+set autoindent
+set showmatch
+
+" I love tabs
+" <CR> means the Carriage Return/Enter character, since we are mapping to ex commands
+nnoremap <C-n> :tabnew<CR>
+nnoremap <C-k> :tabclose<CR>
+map <C-L> gt
+map <C-H> gT
+
+" In EndeavourOS, fzf comes by default
+nnoremap <C-p> :FZF<CR>
+
+" -------------------------------------------------- 
+" End of My configs
+" --------------------------------------------------
+
+" -------------------------------------------------- 
+" Plugins
+" --------------------------------------------------
+
+packadd minpac
+call minpac#init()
+call minpac#add('dense-analysis/ale')
+call minpac#add('easymotion/vim-easymotion')
+
+" -------------------------------------------------- 
+" End of Plugins
+" --------------------------------------------------
 
 " When the +eval feature is missing, the set command above will be skipped.
 " Use a trick to reset compatible only when the +eval feature is missing.
