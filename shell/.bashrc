@@ -7,7 +7,7 @@
 [[ -z "$FUNCNEST" ]] && export FUNCNEST=100    # limits recursive functions, see 'man bash'
 
 # if using X, beep is off
-if type xset b &> /dev/null; then
+if type xset &> /dev/null; then
     xset b off
 fi
 
