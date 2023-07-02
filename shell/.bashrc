@@ -16,6 +16,7 @@ alias ls='ls --color=auto'
 alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 alias l='ls -lav --ignore=.*'   # show long listing but no hidden dotfiles
 alias gcc='gcc -Wall'            # I'm a perfectionist
+alias bateria='cat /sys/class/power_supply/BAT0/capacity'   # for my systems with no GUi
 
 # PATH extensions
 export PATH="$HOME/.local/bin:$PATH"
