@@ -23,7 +23,7 @@ endif
 " --------------------------------------------------
 
 " relative numbered lines
-set rnu
+set nu rnu
 " used to CTRL-S = save 
 nnoremap <C-s> :w<CR>
 inoremap <C-s> :w<CR>
@@ -65,8 +65,8 @@ nnoremap <C-p> :FZF<CR>
 
 packadd minpac
 call minpac#init()
-call minpac#add('dense-analysis/ale')
-call minpac#add('easymotion/vim-easymotion')
+" call minpac#add('dense-analysis/ale')
+" call minpac#add('easymotion/vim-easymotion')
 
 " -------------------------------------------------- 
 " End of Plugins
