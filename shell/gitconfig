@@ -1,0 +1,39 @@
+[user]
+    name = Pedro-V
+	email = mingas62@hotmail.com
+[ui "color"]
+	ui = always
+[color]
+	ui = true
+[core]
+	autocrlf = input
+	safecrlf = true
+[merge]
+	tool = vim -d
+[alias]
+	c = commit
+	s = status -s
+	st = status
+	lg = log --oneline
+	last = log -1 HEAD
+	cl = log -p -- ':(exclude)Cargo.lock'
+	f = push --force-with-lease
+	# https://stackoverflow.com/a/11688523/472927
+	ss = "!f() { git stash show stash^{/$*} -p; }; f"
+	sa = "!f() { git stash apply stash^{/$*}; }; f"
+	sl = stash list
+[pull]
+	ff = only
+[push]
+	default = simple
+[url "git@github.com:"]
+	insteadOf = gh:
+[github]
+	user = Pedro-V
+[diff]
+	algorithm = patience
+	compactionHeuristic = true
+[protocol]
+	version = 2
+[init]
+	defaultBranch = main
