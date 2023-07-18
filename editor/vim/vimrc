@@ -24,14 +24,12 @@ endif
 
 " relative numbered lines
 set nu rnu
-" used to CTRL-S = save 
+" CTRL-S for save
 nnoremap <C-s> :w<CR>
-inoremap <C-s> :w<CR>
 " and CTRL-Q for fast quitting
 nnoremap <C-q> :q<CR>
-inoremap <C-q> :q<CR>
-" margin for auto-break
-set wrapmargin=15
+" the traditional limit on line characters
+set textwidth=80
 " automatically executes :w before :[n!]
 set autowrite
 " default to tabs as spaces, of size 4
@@ -65,8 +63,15 @@ nnoremap <C-p> :FZF<CR>
 
 packadd minpac
 call minpac#init()
+
 " call minpac#add('dense-analysis/ale')
 " call minpac#add('easymotion/vim-easymotion')
+
+" PlantUML support
+
+call minpac#add('aklt/plantuml-syntax')
+call minpac#add('tyru/open-browser.vim')
+call minpac#add('weirongxu/plantuml-previewer.vim')
 
 " -------------------------------------------------- 
 " End of Plugins
