@@ -44,3 +44,5 @@ pyactivate() {
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 
+
+[ -f "/home/pedrov/.ghcup/env" ] && source "/home/pedrov/.ghcup/env" # ghcup-env
