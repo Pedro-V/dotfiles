@@ -40,6 +40,11 @@ pyactivate() {
     source ~/.virtualenvs/"$*"/bin/activate
 }
 
+# fatal: CRLF would be replaced by LF
+crlf2lf() {
+    perl -pi -e  's/\r\n/\n/g' "$*"
+}
+
 # env configs
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
