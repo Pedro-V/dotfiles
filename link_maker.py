@@ -36,12 +36,13 @@ HOME_DIR = pathlib.Path.home()
 # TODO look for a more robust, less verbose way of doing this
 
 symlink_paths = {
-    "shell/bashrc":     ".bashrc",
-    "shell/gitconfig":  ".gitconfig",
-    "editor/vim":       ".vim",
-    "editor/exrc":      ".exrc",
-    "editor/emacs":     ".emacs
-    "gui/i3":           ".config/i3",
+    "shell/bashrc":         ".bashrc",
+    "shell/gitconfig":      ".gitconfig",
+    "shell/bash_profile":   ".bash_profile",
+    "editor/vim":           ".vim",
+    "editor/exrc":          ".exrc",
+    "editor/emacs":         ".emacs",
+    "gui/i3":               ".config/i3",
 }
 
 for origin in symlink_paths:
