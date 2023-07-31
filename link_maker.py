@@ -7,8 +7,8 @@ import pathlib
 
 def prompt_delete_file(file):
     while True:
-        choice = input(f"Destination path '{file}' already exists. Do you want to delete it? (y/n): ")
-        if choice.lower() in ['y', 'yes']:
+        choice = input(f"Destination path '{file}' already exists. Do you want to delete it? (Y/n): ")
+        if choice.lower() in ['y', 'yes', '']:
             return True
         elif choice.lower() in ['n', 'no']:
             return False
@@ -39,6 +39,8 @@ symlink_paths = {
     "shell/bashrc":     ".bashrc",
     "shell/gitconfig":  ".gitconfig",
     "editor/vim":       ".vim",
+    "editor/exrc":      ".exrc",
+    "editor/emacs":     ".emacs
     "gui/i3":           ".config/i3",
 }
 
