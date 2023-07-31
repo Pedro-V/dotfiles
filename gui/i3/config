@@ -209,8 +209,6 @@ set $ws10 "10"
 
 # bind program to workspace and focus to them on startup:
 assign [class="(?i)firefox"] $ws2
-assign [class="Thunar"] $ws3
-assign [class="TelegramDesktop"] $ws5
 
 # automatic set focus new window if it opens on another workspace then the current:
 for_window [class=Xfce4-terminal] focus
@@ -274,13 +272,8 @@ exec --no-startup-id dex --autostart --environment i3
 # start conky:
 #exec_always --no-startup-id conky
 
-# start a script to setup displays
-# uncomment the next line, use arandr to setup displays and save the file as monitor:
-exec --no-startup-id ~/.screenlayout/monitor.sh
-
 # set wallpaper
-exec --no-startup-id sleep 2 && ~/.fehbg &
-#exec --no-startup-id feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros_i3.png
+exec --no-startup-id feh --bg-fill /home/pedrov/configs/gui/wallpaper/lost-in-space.png
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -321,28 +314,12 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # start blueberry app for managing bluetooth devices from tray:
 #exec --no-startup-id blueberry-tray
 
-# networkmanager-applet
-#exec --no-startup-id nm-applet
-
-# clipman-applet
-#exec --no-startup-id xfce4-clipman
 
 ##################
 # floating rules #
 ##################
 
-# set floating (nontiling) for apps needing it
-for_window [class="Yad" instance="yad"] floating enable
-for_window [class="Galculator" instance="galculator"] floating enable
-for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
-
-# set floating (nontiling) for special apps
-for_window [class="Xsane" instance="xsane"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
-for_window [class="qt5ct" instance="qt5ct"] floating enable
-for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
-for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
-for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
 
 # set border of floating window
