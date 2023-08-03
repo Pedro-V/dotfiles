@@ -273,7 +273,7 @@ exec --no-startup-id dex --autostart --environment i3
 #exec_always --no-startup-id conky
 
 # set wallpaper
-exec --no-startup-id feh --bg-fill ../wallpaper/lost-in-space.png
+exec --no-startup-id feh --bg-fill /home/pedrov/repos/dotfiles/gui/wallpaper/lost-in-space.png
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
