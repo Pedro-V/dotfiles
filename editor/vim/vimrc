@@ -46,7 +46,6 @@ set showmatch
 " I love tabs
 " <CR> means the Carriage Return/Enter character, since we are mapping to ex commands
 nnoremap <C-n> :tabnew<CR>
-nnoremap <C-k> :tabclose<CR>
 map <C-L> gt
 map <C-H> gT
 
