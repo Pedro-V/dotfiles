@@ -11,43 +11,44 @@ if type xset &> /dev/null; then
     xset b off
 fi
 
+
 # aliases
 alias ls='ls --color=auto'
-alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
-alias l='ls -lav --ignore=.*'   # show long listing but no hidden dotfiles
-alias gcc='gcc -Wall'            # I'm a perfectionist
-alias bateria='cat /sys/class/power_supply/BAT0/capacity'   # for my systems with no GUi
+alias ll='ls -lav --ignore=..'                              # show long listing of all except ".."
+alias l='ls -lav --ignore=.*'                               # show long listing but no hidden dotfiles
+alias batery='cat /sys/class/power_supply/BAT0/capacity'    # for my systems with no GUI
 
 # PATH extensions
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 
-# environment variables
-# make fzf by default use ripgrep (respects VCSs ignores) and shows dotfiles
-export FZF_DEFAULT_COMMAND='rg --files --hidden'    
 
-############################# useful functions #############################
+# useful functions
 # show git branch at prompt, if git exists
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/ \(.*\)/ (\1)/'
 }
-
-export PS1="\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[33m\]\$(parse_git_branch)\[\033[01;32m\]]\$\[\033[00m\] "
-
-# activate pyenv by name
+# activate Python's venvs by name
 pyactivate() {
     source ~/.virtualenvs/"$*"/bin/activate
 }
-
 # fatal: CRLF would be replaced by LF
 crlf2lf() {
     perl -pi -e  's/\r\n/\n/g' "$*"
 }
 
+
+# environment variables
+# make fzf by default use ripgrep (respects VCSs ignores) and shows dotfiles
+export FZF_DEFAULT_COMMAND='rg --files --hidden'    
+# don't put commands starting with spaces in .bash_history
+export HISTCONTROL=ignorespace
+# very boring prompt
+export PS1="\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[33m\]\$(parse_git_branch)\[\033[01;32m\]]\$\[\033[00m\] "
+
+
 # env configs
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
-
-
 [ -f "/home/pedrov/.ghcup/env" ] && source "/home/pedrov/.ghcup/env" # ghcup-env
