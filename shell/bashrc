@@ -18,6 +18,7 @@ alias ll='ls -lav --ignore=..'                              # show long listing 
 alias l='ls -lav --ignore=.*'                               # show long listing but no hidden dotfiles
 alias batery='cat /sys/class/power_supply/BAT0/capacity'    # for my systems with no GUI
 
+
 # PATH extensions
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
@@ -41,7 +42,7 @@ crlf2lf() {
 
 # environment variables
 # make fzf by default use ripgrep (respects VCSs ignores) and shows dotfiles
-export FZF_DEFAULT_COMMAND='rg --files --hidden'    
+export FZF_DEFAULT_COMMAND='rg --files --hidden | grep -v .git/'
 # don't put commands starting with spaces in .bash_history
 export HISTCONTROL=ignorespace
 # very boring prompt
