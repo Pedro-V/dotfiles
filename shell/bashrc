@@ -38,11 +38,15 @@ pyactivate() {
 crlf2lf() {
     perl -pi -e  's/\r\n/\n/g' "$*"
 }
+# cd with fzf
+cdf() {
+    cd $(find -name .git -prune -o -type d | fzf)
+}
 
 
 # environment variables
 # make fzf by default use ripgrep (respects VCSs ignores) and shows dotfiles
-export FZF_DEFAULT_COMMAND='rg --files --hidden | grep -v .git/'
+export FZF_DEFAULT_COMMAND='find -name .git -prune -o -print'
 # don't put commands starting with spaces in .bash_history
 export HISTCONTROL=ignorespace
 # very boring prompt
