@@ -1,29 +1,53 @@
 #!/bin/python3
 """
-Script for updating my git repositories.
+Script for managing my git repositories.
 
-I mantain all my repositories in ~/repos for an easy pull in all of them
-with `~/repos/update_repos.py {repo}`.
-This may take a while, maybe there is a more efficient way of doing it.
+I mantain all my repositories in ~/repos for an easy management.
 """
 
 import sys
+import re
 from os import system
 
-commands = {
+def adjust_commands(commands):
+    clean_spaces = lambda st: re.sub(r'\s+', ' ', st)
+    return {k: (x, clean_spaces(y)) for k, (x, y) in commands.items()}
+
+commands = adjust_commands({
     'status': (
         'prints each repo status',
-        'find -name .git -execdir pwd \; -execdir git status -s \;',
+        """
+        find -name .git
+            -execdir pwd \;
+            -execdir git status -s \;
+        """,
     ),
-    'update': (
-        'pulls recursively each repo',
-        'find -name .git -execdir pwd \; -execdir git pull --recurse-submodules \;',
+    'pull': (
+        'pulls recursively each repo and submodule',
+        """
+        find -name .git 
+            -execdir pwd \;
+            -execdir git pull --recurse-submodules \;
+        """,
+    ),
+    'push': (
+        'pushes every repo and submodule',
+        """
+        find -name .git
+            -execdir pwd \;
+            -execdir git push \;
+        """,
     ),
     'submodule-checkout': (
         'makes each submodule checkout main',
-        "find -name .gitmodules -execdir pwd \; -execdir git submodule foreach --recursive 'git checkout main' \;",
+        """
+        find -name .gitmodules
+            -execdir pwd \;
+            -execdir git submodule foreach --recursive 
+                'git checkout main &> /dev/null || git checkout master' \;
+        """,
     ),
-}
+})
 
 def main():
     if len(sys.argv) < 2:
