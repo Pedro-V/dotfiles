@@ -9,7 +9,7 @@
 	autocrlf = input
 	safecrlf = true
 [merge]
-	tool = vim -d
+	tool = vimdiff
 [alias]
 	c = commit
 	s = status -s
