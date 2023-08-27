@@ -6,6 +6,7 @@ I mantain all my repositories in ~/repos for an easy pull in all of them
 with `~/repos/update_repos.py {repo}`.
 This may take a while, maybe there is a more efficient way of doing it.
 """
+
 import sys
 from os import listdir, chdir, system, getcwd
 from os.path import join, isdir
