@@ -11,13 +11,17 @@ import sys
 from os import system
 
 commands = {
-    'checkout': (
+    'status': (
         'prints each repo status',
         'find -name .git -execdir pwd \; -execdir git status -s \;',
     ),
     'update': (
         'pulls recursively each repo',
         'find -name .git -execdir pwd \; -execdir git pull --recurse-submodules \;',
+    ),
+    'submodule-checkout': (
+        'makes each submodule checkout main',
+        "find -name .gitmodules -execdir pwd \; -execdir git submodule foreach --recursive 'git checkout main' \;",
     ),
 }
 
