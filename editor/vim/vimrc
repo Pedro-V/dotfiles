@@ -43,14 +43,13 @@ set tabstop=4
 set autoindent
 set showmatch
 
-" I love tabs
 " <CR> means the Carriage Return/Enter character, since we are mapping to ex commands
 nnoremap <C-n> :tabnew<CR>
 map <C-L> gt
 map <C-H> gT
 
-" In EndeavourOS, fzf comes by default
 nnoremap <C-p> :FZF<CR>
+
 
 " -------------------------------------------------- 
 " End of My configs
