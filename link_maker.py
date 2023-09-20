@@ -43,6 +43,7 @@ symlink_paths = {
     "editor/exrc":          ".exrc",
     "editor/emacs":         ".emacs",
     "gui/i3":               ".config/i3",
+    "languages/ghc":        ".ghc",
 }
 
 for origin in symlink_paths:
