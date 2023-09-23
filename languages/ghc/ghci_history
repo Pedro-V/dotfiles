@@ -1,7 +1,100 @@
-:};
-}
-:
-}:
-as
-:{
-{:
+echo foldr{1,2}
+:t scanl1
+:t scanll
+:t scanl
+partition isDigit "12abc34"
+import Data.List
+import Data.Char 
+isNegativeZero (-0)
+isNegativeZero (+0)
+isNegativeZero +0
+isNegativeZero 0
+isNegativeZero 9
+isNegativeZero (-0)
+isNegativeZero (-100)
+isNegativeZero -100
+isNegativeZero 100
+:t isNegativeZero 
+:t scanl
+:info Functor 
+:info Semigroup 
+:info Semigroup 
+:info Either 
+:t (<*>)
+:t (id <*> id)
+square = (*) <$> id <*> id
+functions <*> nums 
+nums = [1, 2, 3]
+functions = [(*2), (+3), (^2)]
+:info Applicative 
+:t Applicative 
+:t id
+:t (<*>)
+(id <*> id) 3
+square 3
+square = (*) <$> id <*> id
+f [3]
+f 
+f [abs]
+:t f
+f = sum <*> length 
+f = (\sum count -> sum / count) <$> sum <*> length 
+f - (\sum count -> sum / count) <$> sum <*> length 
+(\sum count -> sum / count) <$> sum <*> length 
+:t (sqrt . sum . fst)
+:t (sum . fst)
+:t sum
+:t fst
+f ([9..100], -1)
+:t f
+f = sqrt . sum . fst
+:t (.)
+somaDois 3
+somaDois = (+ 2)
+(+ 3 2)
+(+) 3 2
+[1, 2, 3] ++ [3, 4]
+posicoesMatriz pic
+pic = ["# #", " # "]
+posicoesMatriz pic
+:r
+posicoesMatriz pic
+zip pic [0..]
+enum pic
+zip (head $ tail pic) [0..]
+zip (head pic) [0..]
+zip pic [0..]
+posicoesMatriz pic
+pic = ["# #", " # "]
+:r
+:r
+:r
+:r
+:l /tmp/a.hs 
+concat $ map (\(l, x) -> map (\(c, y) -> (c, (x, y))) (zip l [0..])) $ zip pic [0..]
+map id $ zip pic [0..]
+pic
+map (\(l, x) -> map (\(c, y) -> (c, (x, y))) (zip l [0..])) $ zip pic [0..]
+map id $ zip pic [0..]
+map id zip pic [0..]
+map (\(l, x) -> map (\(c, y) -> (c, (x, y))) (zip l [0..])) zip pic [0..]
+map (\(l, x) -> (\(c, y) -> (c, (x, y))) (zip l [0..])) zip pic [0..]
+map (\(l, x) -> (\(c, y) -> (c, (x, y))) (zip l [0..])) zip xs [0..]
+zip pic [0..]
+zip (head pic) [0..]
+zip pic [0..]
+zip (head pic) [0..]
+zip (head pic) [0..]
+head pic
+zip pic [0..]
+pic = ["# #", " # "]
+main
+main = display (InWindow "Nice Window" (200, 200) (10, 10)) white (Circle 80)
+main = display import Graphics.Gloss
+green 
+red
+:t it
+blue
+:t blue 
+blue 
+Color
