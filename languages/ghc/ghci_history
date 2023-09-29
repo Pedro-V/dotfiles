@@ -1,3 +1,53 @@
+main 
+:r
+main 
+:r
+main 
+main
+3 - 9
+import CodeWorld
+map (\(ls, y) -> map (\(c, x) -> (c, (x, y))) (enum ls)) (enum pic)
+:t (\x y -> x + y)
+b = True
+x = 1
+:t sub
+sub x y = x - y
+:t 1
+1
+x = 1
+:t add
+add x y = x + y
+:t \(c, x) -> (c, (x, y))
+y = 3
+:t \(c, x) -> (c, (x, y))
+enum pic
+concat $ map (\(ls, y) -> map (\(c, x) -> (c, (x, y))) (enum ls)) (enum pic)
+:t (++)
+:t concat
+map (\(ls, y) -> map (\(c, x) -> (c, (x, y))) (enum ls)) (enum pic)
+map (\(ls, y) -> map (\(c, x) -> (c, (x, y))) (enum ls)) (enum pic)
+pic = [" # ", "# #"]
+enum xs = zip xs [0..]
+map (\(ls, y) -> map (\(c, x) -> (c, (x, y))) (enum ls)) (enum pic)
+map (\(ls, y) -> map (\(c, x) -> (c, (x, y))) (enum ls)) (enum pic)
+f 8 9
+f = (\x y -> x + y)
+f 8 7
+f x y = (\x y -> x + y)
+enum pic
+enum $ head pic
+enum pic
+map (\(ls, y) -> map (\(c, x) -> (c, (x, y))) (enum ls)) (enum pic)
+enum pic
+enum xs = zip xs [0..]
+map (\(linha, indice) -> enum linha) $ enum pic
+enum pic
+(\(x, y) -> x + y) (3, 5)
+(\(x, y) -> x + y) 3 5
+(\x y -> x + y) 3 5
+enum pic
+enum xs = zip xs [0..]
+pic = [" # ", "# #"]
 echo foldr{1,2}
 :t scanl1
 :t scanll
@@ -48,53 +98,3 @@ f - (\sum count -> sum / count) <$> sum <*> length
 f ([9..100], -1)
 :t f
 f = sqrt . sum . fst
-:t (.)
-somaDois 3
-somaDois = (+ 2)
-(+ 3 2)
-(+) 3 2
-[1, 2, 3] ++ [3, 4]
-posicoesMatriz pic
-pic = ["# #", " # "]
-posicoesMatriz pic
-:r
-posicoesMatriz pic
-zip pic [0..]
-enum pic
-zip (head $ tail pic) [0..]
-zip (head pic) [0..]
-zip pic [0..]
-posicoesMatriz pic
-pic = ["# #", " # "]
-:r
-:r
-:r
-:r
-:l /tmp/a.hs 
-concat $ map (\(l, x) -> map (\(c, y) -> (c, (x, y))) (zip l [0..])) $ zip pic [0..]
-map id $ zip pic [0..]
-pic
-map (\(l, x) -> map (\(c, y) -> (c, (x, y))) (zip l [0..])) $ zip pic [0..]
-map id $ zip pic [0..]
-map id zip pic [0..]
-map (\(l, x) -> map (\(c, y) -> (c, (x, y))) (zip l [0..])) zip pic [0..]
-map (\(l, x) -> (\(c, y) -> (c, (x, y))) (zip l [0..])) zip pic [0..]
-map (\(l, x) -> (\(c, y) -> (c, (x, y))) (zip l [0..])) zip xs [0..]
-zip pic [0..]
-zip (head pic) [0..]
-zip pic [0..]
-zip (head pic) [0..]
-zip (head pic) [0..]
-head pic
-zip pic [0..]
-pic = ["# #", " # "]
-main
-main = display (InWindow "Nice Window" (200, 200) (10, 10)) white (Circle 80)
-main = display import Graphics.Gloss
-green 
-red
-:t it
-blue
-:t blue 
-blue 
-Color
