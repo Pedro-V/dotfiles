@@ -1,2 +1,3 @@
 # ignore installed minpac packages
 editor/vim/pack/minpac/start*
+*_history
