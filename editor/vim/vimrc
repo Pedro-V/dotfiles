@@ -22,6 +22,14 @@ endif
 " My configs
 " --------------------------------------------------
 
+" set Vim home directory's variable
+if has("win32") || has ('win64')
+    let $VIMHOME = $HOME."/vimfiles/"
+else
+    let $VIMHOME = $HOME."/.vim/"
+endif
+
+
 " relative numbered lines
 set nu rnu
 " CTRL-S for save
@@ -32,22 +40,20 @@ nnoremap <C-q> :q<CR>
 set textwidth=80
 " automatically executes :w before :[n!]
 set autowrite
-" default to tabs as spaces, of size 4
+" default to tabs as 4 spaces
 set expandtab
 set shiftwidth=4
 set tabstop=4
-" Folding
-" set foldmethod=indent
-" set foldnestmax=2
 " Indentation
 set autoindent
 set showmatch
 
-" <CR> means the Carriage Return/Enter character, since we are mapping to ex commands
+" tab creation and movement
 nnoremap <C-n> :tabnew<CR>
 map <C-L> gt
 map <C-H> gT
 
+" CTRL-P - fuzzy search
 nnoremap <C-p> :FZF<CR>
 
 " -------------------------------------------------- 
@@ -61,11 +67,10 @@ nnoremap <C-p> :FZF<CR>
 packadd minpac
 call minpac#init()
 
-" call minpac#add('dense-analysis/ale')
-" call minpac#add('easymotion/vim-easymotion')
+" Git support
+call minpac#add('tpope/vim-fugitive')
 
 " PlantUML support
-
 call minpac#add('aklt/plantuml-syntax')
 call minpac#add('tyru/open-browser.vim')
 call minpac#add('weirongxu/plantuml-previewer.vim')
