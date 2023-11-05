@@ -56,6 +56,9 @@ map <C-H> gT
 " CTRL-P - fuzzy search
 nnoremap <C-p> :FZF<CR>
 
+augroup filetypedetect
+    au! BufRead,BufNewFile *.svelte set filetype=html
+augroup END
 " -------------------------------------------------- 
 " End of My configs
 " --------------------------------------------------
