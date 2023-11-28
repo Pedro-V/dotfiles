@@ -40,10 +40,10 @@ nnoremap <C-q> :q<CR>
 set textwidth=80
 " automatically executes :w before :[n!]
 set autowrite
-" default to tabs as 4 spaces
+" default to tabs as 2 spaces
 set expandtab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 " Indentation
 set autoindent
 set showmatch
