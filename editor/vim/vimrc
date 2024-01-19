@@ -29,7 +29,6 @@ else
     let $VIMHOME = $HOME."/.vim/"
 endif
 
-
 " relative numbered lines
 set nu rnu
 " CTRL-S for save
@@ -56,9 +55,6 @@ map <C-H> gT
 " CTRL-P - fuzzy search
 nnoremap <C-p> :FZF<CR>
 
-augroup filetypedetect
-    au! BufRead,BufNewFile *.svelte set filetype=html
-augroup END
 " -------------------------------------------------- 
 " End of My configs
 " --------------------------------------------------

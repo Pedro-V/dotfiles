@@ -23,9 +23,9 @@ alias batery='cat /sys/class/power_supply/BAT0/capacity'    # for my systems wit
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
-# remeber to delete later
-export PATH="$HOME/pbrt-v4/release-build:$PATH"
-export PATH="$HOME/pbrt-v4/debug-build:$PATH"
+export DENO_INSTALL="/home/pedrov/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 
 
 # useful functions
