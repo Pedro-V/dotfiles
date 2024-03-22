@@ -66,9 +66,6 @@ nnoremap <C-p> :FZF<CR>
 packadd minpac
 call minpac#init()
 
-" Git support
-call minpac#add('tpope/vim-fugitive')
-
 " PlantUML support
 call minpac#add('aklt/plantuml-syntax')
 call minpac#add('tyru/open-browser.vim')
@@ -76,9 +73,6 @@ call minpac#add('weirongxu/plantuml-previewer.vim')
 
 " Markdown support
 call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
-
-" Elixir support
-call minpac#add('elixir-editors/vim-elixir')
 
 " -------------------------------------------------- 
 " End of Plugins
