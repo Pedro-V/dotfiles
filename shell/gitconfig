@@ -1,5 +1,5 @@
 [user]
-    name = Pedro-V
+  name = Pedro-V
 	email = mingas62@hotmail.com
 [ui "color"]
 	ui = always
@@ -8,6 +8,7 @@
 [core]
 	autocrlf = input
 	safecrlf = true
+	editor = vim
 [merge]
 	tool = vimdiff
 [alias]
