@@ -29,6 +29,8 @@
 	default = simple
 [url "git@github.com:"]
 	insteadOf = gh:
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
 [github]
 	user = Pedro-V
 [diff]
