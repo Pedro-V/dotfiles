@@ -7,32 +7,47 @@
 [[ -z "$FUNCNEST" ]] && export FUNCNEST=100    # limits recursive functions, see 'man bash'
 
 # if using X, beep is off
-if type xset &> /dev/null; then
-    xset b off
-fi
+xset b off &>/dev/null
 
+# --------------------------------------------------------------------------------
 # aliases
+
 alias ls='ls --color=auto'
 alias ll='ls -lav --ignore=..'                              # show long listing of all except ".."
 alias l='ls -lav --ignore=.*'                               # show long listing but no hidden dotfiles
 alias batery='cat /sys/class/power_supply/BAT0/capacity'    # for my systems with no GUI
 
+# --------------------------------------------------------------------------------
 # useful functions
+
 # show git branch at prompt, if git exists
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/ \(.*\)/ (\1)/'
 }
 
+random_line() {
+  awk 'BEGIN {srand()} {if (rand() <= 1.0/NR) line=$0} END {print line}'
+}
+
+# --------------------------------------------------------------------------------
 # environment variables
+
 # make fzf by default use ripgrep (respects VCSs ignores) and shows dotfiles
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g '\''!.git/'\''';
 # don't put commands starting with spaces in .bash_history
 export HISTCONTROL=ignorespace
 # very boring prompt
 export PS1="\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[33m\]\$(parse_git_branch)\[\033[01;32m\]]\$\[\033[00m\] "
+# The SUPREME editor.
+export EDITOR=vim
+export VISUAL=vim
 
+# --------------------------------------------------------------------------------
 # env configs
+
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.dotnet/tools:$PATH"
+export PATH="$HOME/flutter/bin:$PATH"
