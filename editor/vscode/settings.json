@@ -1,0 +1,17 @@
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "security.workspace.trust.untrustedFiles": "open",
+    "git.openRepositoryInParentFolders": "never",
+    "editor.minimap.enabled": false,
+    "debug.javascript.autoAttachFilter": "disabled",
+    "editor.lineNumbers": "relative",
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "dart.flutterSdkPath": "/home/pedrov/flutter",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "redhat.telemetry.enabled": true,
+    "workbench.startupEditor": "none",
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.commandsToSkipShell": [
+        "-workbench.action.quickOpen"
+    ]
+}
