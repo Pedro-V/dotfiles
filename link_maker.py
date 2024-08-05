@@ -5,11 +5,12 @@ Symlinks for dotfiles.
 import os
 import argparse
 import pathlib
+import shutil
 
 def prompt_delete_file(file):
     while True:
         choice = input(f"Destination path '{file}' already exists. Do you want to overwrite it? (Y/n): ")
-        if choice.lower() in ['y', 'yes', '']:
+        if choice.lower() in ['Y', 'y', 'yes', '']:
             return True
         elif choice.lower() in ['n', 'no']:
             return False
@@ -22,6 +23,12 @@ def make_symlink(origin, dest):
 
 def print_log(log_str, quiet):
     print(log_str) if quiet else None
+
+def delete(dest):
+    if os.path.isdir(dest):
+        shutil.rmtree(dest)
+    else:
+        os.remove(dest)
 
 def attempt_symlink_creation(
     origin,
@@ -37,8 +44,10 @@ def attempt_symlink_creation(
                 return
             if overwrite_all or prompt_delete_file(dest):
                 print_log(f"Overwriting {dest}.", quiet)
-                os.remove(dest)
-        make_symlink(origin, dest)
+                delete(dest)
+                make_symlink(origin, dest)
+        else:
+            make_symlink(origin, dest)
     except Exception as e:
         print(f"Error creating symlink: {e}")
 
@@ -54,6 +63,7 @@ symlink_paths = {
     "editor/vim":           ".vim",
     "editor/exrc":          ".exrc",
     "editor/emacs":         ".emacs",
+    "editor/vscode":        ".config/Code/User",
     "gui/i3":               ".config/i3",
     "languages/ghc":        ".ghc",
 }
