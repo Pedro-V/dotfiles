@@ -29,6 +29,10 @@ else
     let $VIMHOME = $HOME."/.vim/"
 endif
 
+" Don't put .swp files in working dir.
+set backupdir=~/vimtmp,/tmp
+set directory=~/vimtmp,/tmp
+
 " relative numbered lines
 set nu rnu
 " CTRL-S for save
