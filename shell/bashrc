@@ -22,12 +22,59 @@ alias batery='cat /sys/class/power_supply/BAT0/capacity'    # for my systems wit
 
 # show git branch at prompt, if git exists
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/ \(.*\)/ (\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/ \(.*\)/ (\1)/'
 }
 
+# Picks a random line from stdin.
 random_line() {
   awk 'BEGIN {srand()} {if (rand() <= 1.0/NR) line=$0} END {print line}'
 }
+
+# Increments all files that start with the given index.
+# So increment_file_index 04 means the following renames:
+# 04-xyz -> 05.xyz
+# 05-xyz -> 06.xyz
+# and so on.
+increment_file_index() {
+  if [[ $# -lt 1 || $# -gt 2 ]]; then
+    echo "Usage: increment_file_index <start-index> [step]"
+    return 1
+  fi
+
+  local start_index
+  start_index=$(echo "$1" | sed 's/^0*//')
+  [[ -z "$start_index" ]] && start_index=0
+  local step=${2:-1}
+
+  # Sort descending for positive, ascending for negative
+  local files
+  if (( step >= 0 )); then
+    files=$(ls | grep -E '^[0-9]+-.*' | sort -r)
+  else
+    files=$(ls | grep -E '^[0-9]+-.*' | sort)
+  fi
+
+  while IFS= read -r file; do
+    local index=$(echo "$file" | cut -d'-' -f1)
+    local dec_index=$(echo "$index" | sed 's/^0*//')
+    [[ -z "$dec_index" ]] && dec_index=0
+
+    if (( dec_index >= start_index )); then
+      local rest=$(echo "$file" | cut -d'-' -f2-)
+      local new_index=$((dec_index + step))
+      if (( new_index < 0 )); then
+        echo "Skipping $file: resulting index would be negative"
+        continue
+      fi
+      # Preserve leading zeros (e.g., 2-digit format)
+      local width=${#index}
+        local new_index_fmt=$(printf "%0${width}d" "$new_index")
+        mv "$file" "${new_index_fmt}-${rest}"
+    fi
+  done <<< "$files"
+}
+
+
 
 # --------------------------------------------------------------------------------
 # environment variables
@@ -51,3 +98,15 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/flutter/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

@@ -39,16 +39,13 @@
     "dart.debugExternalPackageLibraries": true,
     "dart.debugSdkLibraries": false,
     "update.showReleaseNotes": false,
-    "launch": {
-        "configurations": [
-        
-        ]
-    },
     "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "afterDelay",
+    "editor.wordWrap": "on",
     "github.copilot.enable": {
         "*": false,
         "plaintext": false,
         "markdown": false,
         "scminput": false
-    }
+    },
 }

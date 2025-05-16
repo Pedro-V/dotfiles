@@ -78,6 +78,9 @@ call minpac#add('weirongxu/plantuml-previewer.vim')
 " Markdown support
 call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
 
+" .editorconfig support
+call minpac#add('editorconfig/editorconfig-vim')
+
 " -------------------------------------------------- 
 " End of Plugins
 " --------------------------------------------------

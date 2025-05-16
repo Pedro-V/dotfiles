@@ -44,11 +44,5 @@
         
         ]
     },
-    "explorer.confirmDragAndDrop": false,
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false
-    }
+    "explorer.confirmDragAndDrop": false
 }
