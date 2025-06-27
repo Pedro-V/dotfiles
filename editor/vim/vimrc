@@ -67,8 +67,16 @@ nnoremap <C-p> :FZF<CR>
 " Plugins
 " --------------------------------------------------
 
+" Run `git clone https://github.com/k-takata/minpac.git ~/.vim/pack/minpac/opt/minpac`
+" to setup minpac.
 packadd minpac
 call minpac#init()
+
+" After it initializes and declares the plugins, run `:call minpac#update()` to
+" install them.
+
+call minpac#add('junegunn/fzf')
+call minpac#add('junegunn/fzf.vim')
 
 " PlantUML support
 call minpac#add('aklt/plantuml-syntax')
