@@ -23,15 +23,20 @@ endif
 " --------------------------------------------------
 
 " set Vim home directory's variable
-if has("win32") || has ('win64')
-    let $VIMHOME = $HOME."/vimfiles/"
+if has('win32') || has('win64')
+    let $VIMHOME = $HOME . "/vimfiles/"
 else
-    let $VIMHOME = $HOME."/.vim/"
+    let $VIMHOME = $HOME . "/.vim/"
 endif
 
 " Don't put .swp files in working dir.
-set backupdir=~/vimtmp,/tmp
-set directory=~/vimtmp,/tmp
+if has('win32') || has('win64')
+	set backupdir=$HOME . "/.vimtmp",C:\Temp
+	set directory=$HOME . "/.vimtmp",C:\Temp
+else
+	set backupdir=~/vimtmp,/tmp
+	set directory=~/vimtmp,/tmp
+endif
 
 " relative numbered lines
 set nu rnu
