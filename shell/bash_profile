@@ -3,6 +3,3 @@
 #
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-
-# Cargo
-. "$HOME/.cargo/env"
