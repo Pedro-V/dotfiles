@@ -31,8 +31,8 @@ endif
 
 " Don't put .swp files in working dir.
 if has('win32') || has('win64')
-	set backupdir=$HOME . "/.vimtmp",C:\Temp
-	set directory=$HOME . "/.vimtmp",C:\Temp
+	set backupdir=$HOME."/.vimtmp",C:\Temp
+	set directory=$HOME."/.vimtmp",C:\Temp
 else
 	set backupdir=~/vimtmp,/tmp
 	set directory=~/vimtmp,/tmp
