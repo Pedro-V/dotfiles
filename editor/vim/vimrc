@@ -29,14 +29,14 @@ else
     let $VIMHOME = $HOME."/.vim/"
 endif
 
-" Don't put .swp files in working dir.
-if has('win32') || has('win64')
-	set backupdir=$HOME."/.vimtmp",C:\Temp
-	set directory=$HOME."/.vimtmp",C:\Temp
-else
-	set backupdir=~/vimtmp,/tmp
-	set directory=~/vimtmp,/tmp
+" Don't put .swp and other files in working dir, but in ~/.vim_aux
+let vim_aux_dir = expand("$HOME/.vim_aux//")
+if !isdirectory(vim_aux_dir)
+    call mkdir(vim_aux_dir, 'p')
 endif
+let &directory=vim_aux_dir
+let &backupdir=vim_aux_dir
+let &undodir=vim_aux_dir
 
 " relative numbered lines
 set nu rnu
