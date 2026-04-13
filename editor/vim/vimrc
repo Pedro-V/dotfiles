@@ -56,6 +56,22 @@ set tabstop=2
 set autoindent
 set showmatch
 
+" Reindent
+function! ReindentSpaces(from, to) range
+  let l:saved_et = &expandtab
+  let l:saved_ts = &tabstop
+
+  execute 'set tabstop=' . a:from . ' noexpandtab'
+  execute a:firstline . ',' . a:lastline . 'retab!'
+  execute 'set tabstop=' . a:to . ' expandtab'
+  execute a:firstline . ',' . a:lastline . 'retab!'
+
+  let &expandtab = l:saved_et
+  let &tabstop = l:saved_ts
+endfunction
+
+command! -nargs=+ -range=% Reindent <line1>,<line2>call ReindentSpaces(<f-args>)
+
 " tab creation and movement
 nnoremap <C-n> :tabnew<CR>
 map <C-L> gt
@@ -63,6 +79,13 @@ map <C-H> gT
 
 " CTRL-P - fuzzy search
 nnoremap <C-p> :FZF<CR>
+
+" Auto-commands
+augroup TextWidthForProse
+  " Whenever formatting with gq, avoid double spaces.
+  autocmd!
+  autocmd FileType text,markdown setlocal textwidth=85 nojoinspaces
+augroup END
 
 " -------------------------------------------------- 
 " End of My configs
