@@ -7,7 +7,6 @@
 	ui = true
 [core]
 	autocrlf = input
-	safecrlf = true
 	editor = vim
 [merge]
 	tool = vimdiff
