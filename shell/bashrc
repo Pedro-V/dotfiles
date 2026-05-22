@@ -110,4 +110,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # --------------------------------------------------------------------------------
 # 3rd-party functions, hooks and evals
 
-[[ -x direnv ]] && eval "$(direnv hook bash)"
+[[ -x $(command -v direnv) ]] && eval "$(direnv hook bash)"
