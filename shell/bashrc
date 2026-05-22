@@ -107,4 +107,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-export PATH=/home/pedrov/.local/bin:${PATH}
+# --------------------------------------------------------------------------------
+# 3rd-party functions, hooks and evals
+
+eval "$(direnv hook bash)"
