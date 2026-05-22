@@ -19,8 +19,9 @@ _ANY = "any"
 # Use _ANY as a fallback when no platform-specific entry matches.
 SYMLINK_PATHS: dict[str, str | dict[str, str]] = {
     "shell/bashrc":         {"linux": ".bashrc", "darwin": ".bashrc"},
-    "shell/gitconfig":      ".gitconfig",
     "shell/bash_profile":   {"linux": ".bash_profile", "darwin": ".bash_profile"},
+    "shell/Microsoft.Powershell_profile.ps1": {"win32": "Documents/PowerShell"},
+    "shell/gitconfig":      ".gitconfig",
     "editor/vim":           {_ANY: ".vim", "win32": "vimfiles"},
     "editor/exrc":          ".exrc",
     "editor/emacs":         ".emacs",
