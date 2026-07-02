@@ -44,22 +44,30 @@ endfunction
 " -------------------------------------------------- 
 " Configs
 " --------------------------------------------------
+" Don't put .swp and other files in working dir, but in $VIMHOME subdirs
+let vim_swap_dir = $VIMHOME . '/swap'
+let vim_backup_dir = $VIMHOME . '/backup'
+let vim_undo_dir = $VIMHOME . '/undo'
 
-" Don't put .swp and other files in working dir, but in ~/.vim_aux
-let vim_aux_dir = $VIMHOME . '/aux'
-if !isdirectory(vim_aux_dir)
-    call mkdir(vim_aux_dir, 'p')
-endif
-let &directory=vim_aux_dir
-let &backupdir=vim_aux_dir
-let &undodir=vim_aux_dir
+for dir in [vim_swap_dir, vim_backup_dir, vim_undo_dir]
+    if !isdirectory(dir)
+        call mkdir(dir, 'p')
+    endif
+endfor
+
+let &directory = vim_swap_dir . '//'
+let &backupdir = vim_backup_dir . '//'
+let &undodir = vim_undo_dir . '//'
+
+set backup
+set undofile
 
 set nu rnu
 set autowrite
 set textwidth=80
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
-set tabstop=2
+set tabstop=4
 set autoindent
 set showmatch
 
