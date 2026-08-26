@@ -1,36 +1,47 @@
 # windows-config
 
-Version-controlled Windows tweaks, reproducible across machines. "Dotfiles for Windows."
+Version-controlled, reproducible Windows baseline. "Dotfiles for Windows." Clone on any box, run one elevated command, get your setup.
 
-## Contents
-| File | What |
-|---|---|
-| `search-no-web-results.reg` | Disables Bing/web results in Start-menu search (local search unaffected) |
-| `revert.reg` | Undoes the above (back to stock search) |
-| `apply.ps1` | Idempotent applier — sets the keys **and** restarts SearchHost so it takes effect now |
-
-## Use it on another machine
+## Quick start
 ```powershell
-git clone <your-repo> ; cd windows-config
-# either:
-powershell -ExecutionPolicy Bypass -File .\apply.ps1        # (elevated) applies + restarts SearchHost
-# or just the registry:
-reg import "search-no-web-results.reg"                       # (elevated), then reboot / restart SearchHost
+git clone <your-repo-url> ; cd windows-config
+powershell -ExecutionPolicy Bypass -File .\apply.ps1          # elevated — runs all modules
+# or pick modules:
+.\apply.ps1 -Modules search,wsl
 ```
-To undo: `reg import "revert.reg"` (elevated) then reboot.
+Every module is idempotent (safe to re-run). Some changes (WSL, search) fully apply after a reboot.
+
+## Modules (`apply.ps1`)
+| Module | What it does | Portable? |
+|---|---|---|
+| `search` | Disables Bing/web results in Start-menu search (local search unaffected) | ✅ any Win11 |
+| `wsl` | Writes `~/.wslconfig` — caps WSL2 RAM (`6GB`) + auto memory-reclaim | ✅ any machine w/ WSL |
+| `debloat` | Removes **and deprovisions** a list of Store bloat apps (Xbox app, Phone Link, Office nag, Get Help, Bing News/Weather, Solitaire, Clipchamp, Feedback Hub, Quick Assist) | ✅ list is editable |
+| `nvidia` | Cleans the NVIDIA App driver-cache hoard now **and** schedules a weekly cleanup (it rebuilds ~750MB/update) | ✅ if NVIDIA present |
+
+Edit the config block at the top of `apply.ps1` (`$WslMemory`, `$DebloatAppx`, …) to taste.
+
+## Files
+| File | |
+|---|---|
+| `apply.ps1` | Master orchestrator (modular, idempotent, elevated) |
+| `nvidia-cache-clean.ps1` | Standalone NVIDIA cache cleaner (also run by the weekly task) |
+| `search-no-web-results.reg` | The search registry keys (imported by the `search` module) |
+| `revert.reg` | Undo the search tweak → stock Windows search |
 
 ## Versioning
 ```powershell
 cd C:\Users\minga\windows-config
-git init && git add -A && git commit -m "windows search: no web results"
-# push to your GitHub/GitLab; clone on any other Windows box
+git add -A && git commit -m "..."
+git remote add origin <your-repo-url> && git push -u origin master
 ```
 
-## Three ways to version Windows config (ranked for this use)
-1. **`.reg` files** (this folder) — registry settings are plain text; commit to git, `reg import` anywhere. Simplest for pure registry tweaks. Needs admin for HKLM keys.
-2. **PowerShell script** (`apply.ps1`) — when you need logic beyond registry (restart a service, conditionals, file copies, appx removals). One script per machine class; most flexible.
-3. **winget Configuration (DSC YAML)** — Microsoft's modern declarative option: `winget configure .\config.dsc.yaml` can set registry, install packages, and enforce state idempotently. Best if you want full machine provisioning as code, not just a few tweaks.
+## What is intentionally NOT here (machine-specific — don't port blindly)
+- **Pagefile size** — depends on the box's RAM/SSD.
+- **Per-app startup disables** (Steam/Discord/EA/Epic/Check Point) — depends on what's installed.
+- **App uninstalls** (Warsaw/Zoom/Citrix) and **WSL docker.service disable** — specific to this machine's software.
 
-> Note: HKLM policy keys require elevation. HKCU tweaks don't. Machine-specific things
-> (pagefile size, per-app startup entries) are intentionally NOT in here — they don't
-> port cleanly between machines.
+## Three ways to version Windows config (general)
+1. **`.reg` files** — registry is plain text; `git` + `reg import`. Simplest for pure settings.
+2. **PowerShell script** (this repo) — when you need logic (restart a service, remove appx, conditionals). Most flexible.
+3. **winget Configuration (DSC YAML)** — Microsoft's declarative provisioning: `winget configure config.yaml` sets registry + installs packages idempotently. Best for codifying a *whole* machine.
