@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+; Disable Bing/web results & suggestions in Start-menu search (local search unaffected).
+; Import with:  reg import "search-no-web-results.reg"   (run as admin)
+; Then restart SearchHost (or reboot) for it to take effect.
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"DisableWebSearch"=dword:00000001
+"ConnectedSearchUseWeb"=dword:00000000
+"AllowCloudSearch"=dword:00000000
