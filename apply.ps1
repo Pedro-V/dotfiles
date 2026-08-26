@@ -1,6 +1,6 @@
 #Requires -RunAsAdministrator
 <#
-  Windows baseline provisioning — reproducible setup for a fresh (or existing) Windows box.
+  Windows baseline provisioning - reproducible setup for a fresh (or existing) Windows box.
   Run elevated:  powershell -ExecutionPolicy Bypass -File .\apply.ps1
   Pick modules:  .\apply.ps1 -Modules search,wsl        (default: all)
   Every module is idempotent and safe to re-run.
