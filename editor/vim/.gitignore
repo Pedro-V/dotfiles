@@ -1,4 +1,7 @@
 # ignore netrw history
 *.netrwhist
 pack/
-aux/
+swap/
+backup/
+undo/
+viminfo

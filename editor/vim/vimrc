@@ -68,6 +68,8 @@ let &undodir = vim_undo_dir . '//'
 set backup
 set undofile
 
+let &viminfofile = $VIMHOME . '/viminfo'
+
 set nu rnu
 set autowrite
 set textwidth=80
