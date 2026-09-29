@@ -1,3 +1,4 @@
 # ignore netrw history
 *.netrwhist
 pack/
+aux/

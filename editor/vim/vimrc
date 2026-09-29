@@ -1,5 +1,11 @@
 source $VIMRUNTIME/defaults.vim
 
+if has('termguicolors')
+  set termguicolors
+endif
+set background=dark
+colorscheme habamax
+
 let mapleader = " "
 let maplocalleader = ","
 let $VIMHOME = has('win32') ? expand('~/vimfiles') : expand('~/.vim')
