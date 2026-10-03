@@ -28,7 +28,7 @@ LINKS: dict[str, str | dict[str, str]] = {
     "shell/Microsoft.Powershell_profile.ps1": {
         "win32": "Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
     },
-    "shell/gitconfig": ".gitconfig",
+    "git/gitconfig": ".gitconfig",
     "editor/vim": {ANY: ".vim", "win32": "vimfiles"},
     "editor/exrc": ".exrc",
     "editor/emacs": ".emacs",
