@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+; Undo: restore stock Windows search (re-enable web/Bing results).
+; The "-" before the value name deletes it. Import as admin, then restart SearchHost/reboot.
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"DisableWebSearch"=-
+"ConnectedSearchUseWeb"=-
+"AllowCloudSearch"=-
