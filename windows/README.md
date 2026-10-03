@@ -1,15 +1,17 @@
-# windows-config
+# windows
 
 Version-controlled, reproducible Windows baseline. "Dotfiles for Windows." Clone on any box, run one elevated command, get your setup.
 
 ## Quick start
 ```powershell
-git clone <your-repo-url> ; cd windows-config
+git clone https://github.com/Pedro-V/dotfiles ; cd dotfiles\windows
 powershell -ExecutionPolicy Bypass -File .\apply.ps1          # elevated — runs all modules
 # or pick modules:
 .\apply.ps1 -Modules search,wsl
 ```
 Every module is idempotent (safe to re-run). Some changes (WSL, search) fully apply after a reboot.
+
+**Note:** the `nvidia` module's scheduled task embeds this checkout's absolute path. If you move the repo, re-run `.\apply.ps1 -Modules nvidia` to re-point it.
 
 ## Modules (`apply.ps1`)
 | Module | What it does | Portable? |
@@ -28,13 +30,6 @@ Edit the config block at the top of `apply.ps1` (`$WslMemory`, `$DebloatAppx`, �
 | `nvidia-cache-clean.ps1` | Standalone NVIDIA cache cleaner (also run by the weekly task) |
 | `search-no-web-results.reg` | The search registry keys (imported by the `search` module) |
 | `revert.reg` | Undo the search tweak → stock Windows search |
-
-## Versioning
-```powershell
-cd C:\Users\minga\windows-config
-git add -A && git commit -m "..."
-git remote add origin <your-repo-url> && git push -u origin master
-```
 
 ## What is intentionally NOT here (machine-specific — don't port blindly)
 - **Pagefile size** — depends on the box's RAM/SSD.

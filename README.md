@@ -2,6 +2,8 @@
 
 Configs for my Unix experience, by theme.
 
+Windows system tweaks (registry, debloat, scheduled tasks) live in [`windows/`](windows/README.md).
+
 In case you want to make symlinks, the `link_maker.py` script automatically
 makes some of them.
 
