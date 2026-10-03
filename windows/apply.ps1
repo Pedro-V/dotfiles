@@ -14,7 +14,7 @@ param(
 $WslMemory = '6GB'      # WSL2 RAM cap
 $WslSwap   = '2GB'
 $DebloatAppx = @(       # Store apps to remove + deprovision (edit freely)
-  'YourPhone','CrossDevice','GamingApp','XboxGamingOverlay','MicrosoftOfficeHub',
+  'YourPhone','CrossDevice','GamingApp','MicrosoftOfficeHub',
   'GetHelp','BingNews','BingWeather','SolitaireCollection','Clipchamp',
   'WindowsFeedbackHub','QuickAssist'
 )
